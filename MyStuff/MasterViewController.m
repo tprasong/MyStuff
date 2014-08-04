@@ -8,16 +8,23 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "MyWhatsit.h"
 
 @interface MasterViewController ()
             
-@property NSMutableArray *objects;
+@property NSMutableArray *things;
 
 @end
 
 @implementation MasterViewController
             
 - (void)awakeFromNib {
+    self.things = [@[
+                [[MyWhatsit alloc] initWithName:@"Gort" location:@"den"],
+                [[MyWhatsit alloc] initWithName:@"Disappearing TARDIS mug" location:@"kitchen"],
+                [[MyWhatsit alloc] initWithName:@"Robot USB drive" location:@"Office"],
+                [[MyWhatsit alloc] initWithName:@"Sad Robot USB hub" location:@"Office"],
+                [[MyWhatsit alloc] initWithName:@"Solar Powered Bunny" location:@"Office"]] mutableCopy];
     [super awakeFromNib];
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         self.clearsSelectionOnViewWillAppear = NO;
@@ -41,10 +48,10 @@
 }
 
 - (void)insertNewObject:(id)sender {
-    if (!self.objects) {
-        self.objects = [[NSMutableArray alloc] init];
+    if (!self.things) {
+        self.things = [[NSMutableArray alloc] init];
     }
-    [self.objects insertObject:[NSDate date] atIndex:0];
+    [self.things insertObject:[NSDate date] atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -54,7 +61,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.objects[indexPath.row];
+        NSDate *object = self.things[indexPath.row];
         [(DetailViewController *)[[segue destinationViewController] topViewController] setDetailItem:object];
     }
 }
@@ -66,14 +73,15 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.objects.count;
+    return self.things.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    MyWhatsit *thing = self.things[indexPath.row];
+    cell.textLabel.text = thing.name;
+    cell.detailTextLabel.text = thing.location;
     return cell;
 }
 
@@ -84,7 +92,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.objects removeObjectAtIndex:indexPath.row];
+        [self.things removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -93,7 +101,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSDate *object = self.objects[indexPath.row];
+        NSDate *object = self.things[indexPath.row];
         self.detailViewController.detailItem = object;
     }
 }
