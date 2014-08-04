@@ -51,7 +51,10 @@
     if (!self.things) {
         self.things = [[NSMutableArray alloc] init];
     }
-    [self.things insertObject:[NSDate date] atIndex:0];
+    static unsigned int itemNumber = 1;
+    NSString *newItemName = [NSString stringWithFormat:@"My Item %u", itemNumber++];
+    MyWhatsit *newItem = [[MyWhatsit alloc] initWithName:newItemName location:nil];
+    [self.things insertObject:newItem atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -61,8 +64,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.things[indexPath.row];
-        [(DetailViewController *)[[segue destinationViewController] topViewController] setDetailItem:object];
+        MyWhatsit *thing = self.things[indexPath.row];
+        [(DetailViewController *)[[segue destinationViewController] topViewController] setDetailItem:thing];
     }
 }
 
@@ -101,8 +104,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSDate *object = self.things[indexPath.row];
-        self.detailViewController.detailItem = object;
+        MyWhatsit *thing = self.things[indexPath.row];
+        self.detailViewController.detailItem = thing;
     }
 }
 
