@@ -12,20 +12,25 @@
 
 @interface MasterViewController ()
             
-@property NSMutableArray *things;
+@property NSMutableArray* things;
 
 @end
 
 @implementation MasterViewController
-            
+
+-(void) dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 - (void)awakeFromNib {
+    [super awakeFromNib];
+    
     self.things = [@[
                 [[MyWhatsit alloc] initWithName:@"Gort" location:@"den"],
                 [[MyWhatsit alloc] initWithName:@"Disappearing TARDIS mug" location:@"kitchen"],
                 [[MyWhatsit alloc] initWithName:@"Robot USB drive" location:@"Office"],
                 [[MyWhatsit alloc] initWithName:@"Sad Robot USB hub" location:@"Office"],
                 [[MyWhatsit alloc] initWithName:@"Solar Powered Bunny" location:@"Office"]] mutableCopy];
-    [super awakeFromNib];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(whatsitDidChangeNotification:) name:kWhatsitDidChangeNotification object:nil];
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         self.clearsSelectionOnViewWillAppear = NO;
         self.preferredContentSize = CGSizeMake(320.0, 600.0);
@@ -79,6 +84,10 @@
     return self.things.count;
 }
 
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewCellEditingStyleInsert;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
@@ -90,7 +99,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -106,6 +115,14 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         MyWhatsit *thing = self.things[indexPath.row];
         self.detailViewController.detailItem = thing;
+    }
+}
+
+-(void)whatsitDidChangeNotification:(NSNotification *)notification{
+    NSUInteger index = [self.things indexOfObject:notification.object];
+    if (index != NSNotFound) {
+        NSIndexPath *path = [NSIndexPath indexPathForItem:index inSection:0];
+        [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationNone];
     }
 }
 

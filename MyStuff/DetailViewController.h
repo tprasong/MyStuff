@@ -13,6 +13,7 @@
 @property (strong, nonatomic) MyWhatsit *detailItem;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *locationField;
+-(IBAction)changeDetail:(id)sender;
 
 @end
 

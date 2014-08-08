@@ -50,6 +50,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(IBAction)changeDetail:(id)sender{
+    if (sender==self.nameField) {
+        self.detailItem.name = self.nameField.text;
+    }else{
+        self.detailItem.location = self.locationField.text;
+    }
+    [self.detailItem postDidChangeNotification];
+}
+
 #pragma mark - Split view
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController

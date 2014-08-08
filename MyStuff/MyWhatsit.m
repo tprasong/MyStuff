@@ -19,4 +19,7 @@
     }
     return self;
 }
+-(void)postDidChangeNotification{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kWhatsitDidChangeNotification object:self];
+}
 @end

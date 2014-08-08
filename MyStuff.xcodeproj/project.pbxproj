@@ -11,10 +11,11 @@
 		5FF9FA6C198F2A2100365704 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9FA6B198F2A2100365704 /* AppDelegate.m */; };
 		5FF9FA6F198F2A2100365704 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9FA6E198F2A2100365704 /* MasterViewController.m */; };
 		5FF9FA72198F2A2100365704 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9FA71198F2A2100365704 /* DetailViewController.m */; };
-		5FF9FA75198F2A2100365704 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FF9FA73198F2A2100365704 /* Main.storyboard */; };
 		5FF9FA77198F2A2100365704 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FF9FA76198F2A2100365704 /* Images.xcassets */; };
 		5FF9FA83198F2A2100365704 /* MyStuffTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9FA82198F2A2100365704 /* MyStuffTests.m */; };
 		5FF9FA8E198F437400365704 /* MyWhatsit.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9FA8D198F437400365704 /* MyWhatsit.m */; };
+		5FFD573319951018003F22F9 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FFD572F19951018003F22F9 /* iPad.storyboard */; };
+		5FFD573419951018003F22F9 /* iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FFD573119951018003F22F9 /* iphone.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,13 +38,14 @@
 		5FF9FA6E198F2A2100365704 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		5FF9FA70198F2A2100365704 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		5FF9FA71198F2A2100365704 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		5FF9FA74198F2A2100365704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5FF9FA76198F2A2100365704 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5FF9FA7C198F2A2100365704 /* MyStuffTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyStuffTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FF9FA81198F2A2100365704 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FF9FA82198F2A2100365704 /* MyStuffTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyStuffTests.m; sourceTree = "<group>"; };
 		5FF9FA8C198F437400365704 /* MyWhatsit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWhatsit.h; sourceTree = "<group>"; };
 		5FF9FA8D198F437400365704 /* MyWhatsit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWhatsit.m; sourceTree = "<group>"; };
+		5FFD573019951018003F22F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPad.storyboard; sourceTree = "<group>"; };
+		5FFD573219951018003F22F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iphone.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,13 +87,14 @@
 		5FF9FA65198F2A2100365704 /* MyStuff */ = {
 			isa = PBXGroup;
 			children = (
+				5FFD572F19951018003F22F9 /* iPad.storyboard */,
+				5FFD573119951018003F22F9 /* iphone.storyboard */,
 				5FF9FA6A198F2A2100365704 /* AppDelegate.h */,
 				5FF9FA6B198F2A2100365704 /* AppDelegate.m */,
 				5FF9FA6D198F2A2100365704 /* MasterViewController.h */,
 				5FF9FA6E198F2A2100365704 /* MasterViewController.m */,
 				5FF9FA70198F2A2100365704 /* DetailViewController.h */,
 				5FF9FA71198F2A2100365704 /* DetailViewController.m */,
-				5FF9FA73198F2A2100365704 /* Main.storyboard */,
 				5FF9FA76198F2A2100365704 /* Images.xcassets */,
 				5FF9FA66198F2A2100365704 /* Supporting Files */,
 				5FF9FA8C198F437400365704 /* MyWhatsit.h */,
@@ -206,7 +209,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FF9FA75198F2A2100365704 /* Main.storyboard in Resources */,
+				5FFD573419951018003F22F9 /* iphone.storyboard in Resources */,
+				5FFD573319951018003F22F9 /* iPad.storyboard in Resources */,
 				5FF9FA77198F2A2100365704 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,12 +256,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5FF9FA73198F2A2100365704 /* Main.storyboard */ = {
+		5FFD572F19951018003F22F9 /* iPad.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5FF9FA74198F2A2100365704 /* Base */,
+				5FFD573019951018003F22F9 /* Base */,
 			);
-			name = Main.storyboard;
+			name = iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		5FFD573119951018003F22F9 /* iphone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5FFD573219951018003F22F9 /* Base */,
+			);
+			name = iphone.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -347,8 +359,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = MyStuff/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -358,8 +372,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = MyStuff/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -418,6 +434,7 @@
 				5FF9FA88198F2A2100365704 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5FF9FA89198F2A2100365704 /* Build configuration list for PBXNativeTarget "MyStuffTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +443,7 @@
 				5FF9FA8B198F2A2100365704 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
